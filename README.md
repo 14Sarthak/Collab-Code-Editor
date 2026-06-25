@@ -1,12 +1,10 @@
 # 🖥️ CodeSync
 
- A real-time collaborative code editor that enables multiple developers to code together seamlessly.CodeSync is a full-stack real-time collaborative code editor that allows multiple users to join the same coding session and edit code simultaneously.
-
-Each session is identified by a unique Room ID that can be shared with teammates. The application synchronizes code changes instantly using Socket.IO, making it suitable for collaborative programming, interview practice, pair programming, and learning.
+CodeSync is a full-stack real-time collaborative code editor that enables multiple users to write and edit code simultaneously. Built with React, Node.js, Express, Socket.IO, and MongoDB, it provides instant code synchronization through shareable room IDs, making it suitable for pair programming, interview practice, collaborative learning, and team development.
 
 ## 🌐 Live Demo
 
-** https://collab-code-editor-cdl1.vercel.app/
+🔗 https://collab-code-editor-cdl1.vercel.app/
 
 ---
 
@@ -150,21 +148,8 @@ npm run dev
 
 ---
 
-# 🚀 Usage
 
-1. Start the backend server.
-2. Start the frontend.
-3. Open the application.
-4. Enter your name.
-5. Create a new session.
-6. Share the generated Room ID.
-7. Another user joins using the same Room ID.
-8. Start collaborating in real time.
-
----
-
-# 🔄 How It Works
-
+# 🏗️ System Workflow
 1. User creates a coding session.
 2. Backend generates a unique Room ID.
 3. Socket.IO connects all users in the room.
@@ -176,7 +161,7 @@ npm run dev
 
 # 🔮 Future Enhancements
 
-- 🔹 Integrated online code execution
+- 🔹 Online code execution support
 - 🔹 Syntax themes
 - 🔹 Chat system
 - 🔹 Voice collaboration

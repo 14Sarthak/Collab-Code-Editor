@@ -1,47 +1,16 @@
 # 🖥️ CodeSync
 
-> A real-time collaborative code editor that enables multiple developers to code together seamlessly.
-
-[![React](https://img.shields.io/badge/React-19-blue?logo=react)](https://react.dev/)
-[![Node.js](https://img.shields.io/badge/Node.js-Express-green?logo=node.js)](https://nodejs.org/)
-[![Socket.IO](https://img.shields.io/badge/Socket.IO-Real--Time-black?logo=socket.io)](https://socket.io/)
-[![MongoDB](https://img.shields.io/badge/Database-MongoDB-green?logo=mongodb)](https://www.mongodb.com/)
-[![Vercel](https://img.shields.io/badge/Frontend-Vercel-black?logo=vercel)](https://vercel.com/)
-[![Render](https://img.shields.io/badge/Backend-Render-46E3B7?logo=render)](https://render.com/)
-
----
-
-## 🌐 Live Demo
-
-**Frontend:** https://collab-code-editor-cdl1.vercel.app/
-
-**Backend:** https://collab-code-editor-myp7.onrender.com/
-
----
-
-## 📖 Overview
-
-CodeSync is a full-stack real-time collaborative code editor that allows multiple users to join the same coding session and edit code simultaneously.
+> A real-time collaborative code editor that enables multiple developers to code together seamlessly.CodeSync is a full-stack real-time collaborative code editor that allows multiple users to join the same coding session and edit code simultaneously.
 
 Each session is identified by a unique Room ID that can be shared with teammates. The application synchronizes code changes instantly using Socket.IO, making it suitable for collaborative programming, interview practice, pair programming, and learning.
 
----
+## 🌐 Live Demo
 
-# ✨ Features
-
-- 🚀 Create unique coding sessions
-- 👥 Join existing sessions using a Room ID
-- ⚡ Real-time code synchronization
-- 🔄 Multi-user collaboration
-- 🎨 User avatars with unique colors
-- 📋 One-click Room ID sharing
-- 💾 Automatic session persistence using MongoDB
-- 🌍 Fully deployed on Vercel + Render
-- 📱 Responsive interface
+** https://collab-code-editor-cdl1.vercel.app/
 
 ---
 
-# 📸 Screenshots
+# 📸 Preview
 
 ## Home Page
 
@@ -58,6 +27,21 @@ Each session is identified by a unique Room ID that can be shared with teammates
 ## Live Collaboration
 
 ![Collaboration](screenshots/collaboration.png)
+
+---
+
+
+# ✨ Features
+
+- 🚀 Create unique coding sessions
+- 👥 Join existing sessions using a Room ID
+- ⚡ Real-time code synchronization
+- 🔄 Multi-user collaboration
+- 🎨 User avatars with unique colors
+- 📋 One-click Room ID sharing
+- 💾 Automatic session persistence using MongoDB
+- 🌍 Fully deployed on Vercel + Render
+- 📱 Responsive interface
 
 ---
 
@@ -85,6 +69,7 @@ Each session is identified by a unique Room ID that can be shared with teammates
 - Render
 
 ---
+
 
 # 📂 Project Structure
 

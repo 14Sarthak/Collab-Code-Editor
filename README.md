@@ -8,7 +8,7 @@ CodeSync is a full-stack real-time collaborative code editor that enables multip
 
 ---
 
-# 📸 Preview
+## 📸 Preview
 
 ## Home Page
 
@@ -29,7 +29,7 @@ CodeSync is a full-stack real-time collaborative code editor that enables multip
 ---
 
 
-# ✨ Features
+## ✨ Features
 
 - 🚀 Create unique coding sessions
 - 👥 Join existing sessions using a Room ID
@@ -43,7 +43,7 @@ CodeSync is a full-stack real-time collaborative code editor that enables multip
 
 ---
 
-# 🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 ### Frontend
 
@@ -69,7 +69,7 @@ CodeSync is a full-stack real-time collaborative code editor that enables multip
 ---
 
 
-# 📂 Project Structure
+## 📂 Project Structure
 
 ```
 Collab-Code-Editor
@@ -96,7 +96,7 @@ Collab-Code-Editor
 
 ---
 
-# ⚙️ Installation
+## ⚙️ Installation
 
 ## Clone the repository
 
@@ -104,7 +104,7 @@ Collab-Code-Editor
 git clone https://github.com/14Sarthak/Collab-Code-Editor.git
 ```
 
-## Backend
+### Backend
 
 ```bash
 cd server
@@ -126,7 +126,7 @@ npm start
 
 ---
 
-## Frontend
+### Frontend
 
 ```bash
 cd client
@@ -149,7 +149,7 @@ npm run dev
 ---
 
 
-# 🏗️ System Workflow
+## 🏗️ System Workflow
 1. User creates a coding session.
 2. Backend generates a unique Room ID.
 3. Socket.IO connects all users in the room.
@@ -159,7 +159,7 @@ npm run dev
 
 ---
 
-# 🔮 Future Enhancements
+## 🔮 Future Enhancements
 
 - 🔹 Online code execution support
 - 🔹 Syntax themes

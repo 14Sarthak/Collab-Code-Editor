@@ -7,22 +7,39 @@ module.exports = (io) => {
   io.on('connection', (socket) => {
     console.log('Socket connected:', socket.id)
 
-    socket.on('join-room', async ({ roomId, username }) => {
-      socket.join(roomId)
-      socket.data.roomId = roomId
-      socket.data.username = username
+  socket.on('join-room', async ({ roomId, username }) => {
+  socket.join(roomId)
+  socket.data.roomId = roomId
+  socket.data.username = username
 
-      if (!rooms[roomId]) rooms[roomId] = { code: '', history: [] }
+  if (!rooms[roomId]) rooms[roomId] = { code: '', history: [] }
 
-      try {
-        const session = await Session.findOne({ roomId })
-        if (session) rooms[roomId].code = session.code
-      } catch (e) {}
+  try {
+    const session = await Session.findOne({ roomId })
+    if (session) rooms[roomId].code = session.code
+  } catch (e) {}
 
-      socket.emit('init', { code: rooms[roomId].code })
-      socket.to(roomId).emit('user-joined', { username, socketId: socket.id })
-      console.log(`${username} joined room ${roomId}`)
-    })
+  
+  socket.emit('init', { code: rooms[roomId].code })
+
+ 
+  const clients = await io.in(roomId).fetchSockets()
+
+  const users = clients.map(client => ({
+    username: client.data.username,
+    socketId: client.id
+  }))
+
+  socket.emit('room-users', users)
+
+  
+  socket.to(roomId).emit('user-joined', {
+    username,
+    socketId: socket.id
+  })
+
+  console.log(`${username} joined room ${roomId}`)
+})
 
     socket.on('code-change', ({ roomId, code }) => {
       if (!rooms[roomId]) rooms[roomId] = { code, history: [] }

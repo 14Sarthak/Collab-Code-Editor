@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import { io } from 'socket.io-client'
-import axios from 'axios'
 import Editor from '../components/editor'
 import Topbar from '../components/topbar'
 import OutputPanel from '../components/outputpanel'
@@ -18,8 +17,6 @@ export default function Session() {
   const [code, setCode] = useState('// Start coding here...')
   const [language, setLanguage] = useState('javascript')
   const [users, setUsers] = useState([])
-  const [output, setOutput] = useState(null)
-  const [running, setRunning] = useState(false)
   const socketRef = useRef(null)
   const codeRef = useRef(code)
 
@@ -40,6 +37,15 @@ export default function Session() {
       setCode(newCode)
       codeRef.current = newCode
     })
+
+    socket.on('room-users', (roomUsers) => {
+  setUsers(
+    roomUsers.map((u, index) => ({
+      ...u,
+      color: COLORS[index % COLORS.length]
+    }))
+  )
+})
 
     socket.on('user-joined', ({ username, socketId }) => {
       setUsers(prev => {
@@ -63,44 +69,6 @@ export default function Session() {
     socketRef.current?.emit('code-change', { roomId, code: value })
   }
 
-  const runCode = async () => {
-  setRunning(true)
-  setOutput(null)
-  try {
-    const langMap = {
-      javascript: 63,
-      python: 71,
-      cpp: 54,
-      java: 62
-    }
-
-    // Submit code
-    const submitRes = await axios.post(
-      'https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=false&wait=true',
-      {
-        source_code: codeRef.current,
-        language_id: langMap[language],
-        stdin: ''
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-    )
-
-    const data = submitRes.data
-    setOutput({
-      stdout: data.stdout || '',
-      stderr: data.stderr || '',
-      error: data.compile_output || data.message || ''
-    })
-  } catch (err) {
-    setOutput({ error: 'Code execution failed. Try again.' })
-  }
-  setRunning(false)
-}
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       <Topbar
@@ -109,18 +77,53 @@ export default function Session() {
         language={language}
         setLanguage={setLanguage}
       />
-      <div style={{ display: 'flex', flex: 1, overflow: 'hidden', flexDirection: 'column' }}>
-        <div style={{ padding: '6px 12px', background: '#252526', borderBottom: '1px solid #333', display: 'flex', gap: '8px' }}>
-          <span style={{ fontSize: '12px', color: '#888' }}>index.js</span>
-          <button onClick={runCode} disabled={running} style={{
-            marginLeft: 'auto', background: '#1D9E75', color: '#fff',
-            border: 'none', borderRadius: '6px', padding: '3px 14px', fontSize: '12px'
-          }}>
-            {running ? 'Running...' : '▶ Run'}
+
+      <div
+        style={{
+          display: 'flex',
+          flex: 1,
+          overflow: 'hidden',
+          flexDirection: 'column'
+        }}
+      >
+        <div
+          style={{
+            padding: '6px 12px',
+            background: '#252526',
+            borderBottom: '1px solid #333',
+            display: 'flex',
+            gap: '8px'
+          }}
+        >
+          <span style={{ fontSize: '12px', color: '#888' }}>
+            index.js
+          </span>
+
+          <button
+            disabled
+            style={{
+              marginLeft: 'auto',
+              background: '#555',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '6px',
+              padding: '4px 14px',
+              fontSize: '12px',
+              cursor: 'not-allowed',
+              opacity: 0.7
+            }}
+          >
+            Coming Soon
           </button>
         </div>
-        <Editor code={code} onChange={handleCodeChange} language={language} />
-        <OutputPanel output={output} loading={running} />
+
+        <Editor
+          code={code}
+          onChange={handleCodeChange}
+          language={language}
+        />
+
+        <OutputPanel />
       </div>
     </div>
   )

@@ -15,6 +15,13 @@ client/dist/
 *.log
 npm-debug.log*
 
+# Coverage
+coverage/
+
+# IDE files
+.vscode/
+.idea/
+
 # OS files
 .DS_Store
 Thumbs.db

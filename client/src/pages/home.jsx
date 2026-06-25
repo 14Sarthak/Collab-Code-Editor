@@ -8,17 +8,27 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
-  const createSession = async () => {
-    if (!username.trim()) return alert('Enter your name')
-    setLoading(true)
-    try {
-      const res = await axios.post('http://localhost:8081/api/session/create')
-      navigate(`/session/${res.data.roomId}`, { state: { username } })
-    } catch (err) {
-      alert('Failed to create session')
-    }
-    setLoading(false)
+  const API_URL =
+  import.meta.env.VITE_API_URL || 'http://localhost:8081'
+
+const createSession = async () => {
+  if (!username.trim()) return alert('Enter your name')
+
+  setLoading(true)
+
+  try {
+    const res = await axios.post(`${API_URL}/api/session/create`)
+
+    navigate(`/session/${res.data.roomId}`, {
+      state: { username }
+    })
+  } catch (err) {
+    console.error(err)
+    alert('Failed to create session')
   }
+
+  setLoading(false)
+}
 
   const joinSession = () => {
     if (!username.trim()) return alert('Enter your name')

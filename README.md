@@ -1,6 +1,6 @@
 # 🖥️ CodeSync
 
-> A real-time collaborative code editor that enables multiple developers to code together seamlessly.CodeSync is a full-stack real-time collaborative code editor that allows multiple users to join the same coding session and edit code simultaneously.
+ A real-time collaborative code editor that enables multiple developers to code together seamlessly.CodeSync is a full-stack real-time collaborative code editor that allows multiple users to join the same coding session and edit code simultaneously.
 
 Each session is identified by a unique Room ID that can be shared with teammates. The application synchronizes code changes instantly using Socket.IO, making it suitable for collaborative programming, interview practice, pair programming, and learning.
 

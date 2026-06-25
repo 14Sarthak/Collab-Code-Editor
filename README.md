@@ -98,7 +98,7 @@ Collab-Code-Editor
 
 ## ⚙️ Installation
 
-## Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/14Sarthak/Collab-Code-Editor.git
@@ -173,7 +173,7 @@ npm run dev
 
 ---
 
-# 📈 Project Highlights
+## 📈 Project Highlights
 
 - Real-time collaboration using WebSockets
 - Full-stack MERN architecture
